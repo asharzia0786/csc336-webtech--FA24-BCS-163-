@@ -1,0 +1,118 @@
+
+header {
+    position: relative;
+    min-height: 220px;
+    padding: 20px 30px;
+}
+
+#name {
+    position: absolute;
+    top: 10px;
+    text-align: left;
+    font-family: Calibri, sans-serif;
+    font-size: 60px;
+    font-weight: bold;
+    color: rgb(2, 2, 139);
+}
+
+#tagline {
+    position: absolute;
+    top: 120px;
+    text-align: left;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+}
+
+#image {
+    position: absolute;
+    right: 30px;
+    top: 40px;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50px;
+}
+
+#summary h2{
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 30px;
+    background-color: skyblue;
+    color: rgb(2, 2, 139);
+}
+#summary p{
+    font-family: Calibri, sans-serif;
+    font-size: 20px;
+}
+#skills h2{
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 30px;
+    background-color: skyblue;
+    color: rgb(2, 2, 139);
+}
+#skills ul{
+    list-style: none;
+    font-family: Calibri, sans-serif;
+    font-size: 20px;
+}
+#projects h2{
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 30px;
+    background-color: skyblue;
+    color: rgb(2, 2, 139);
+}
+#projects h3{
+    font-family: Calibri, sans-serif;
+    font-size: 25px;
+}
+#projects p{
+    font-family: Calibri, sans-serif;
+    font-size: 20px;
+    float:right;
+}
+#projects ul{
+    font-family: Calibri, sans-serif;
+    justify-content: left;
+    font-size: 20px;
+}
+#education h2{
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 30px;
+    background-color: skyblue;
+    color: rgb(2, 2, 139);
+}
+#education ul{
+    font-family: Calibri, sans-serif;
+    font-size: 20px;
+}
+#contact {
+    text-align: center;
+}
+
+#contact h2 {
+    font-family: Calibri, sans-serif;
+    font-size: 30px;
+    background-color: skyblue;
+    color: rgb(2, 2, 139);
+}
+
+#contact ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    font-family: Calibri, sans-serif;
+    font-size: 20px;
+}
+
+footer {
+    text-align: center;
+    font-family: Calibri, sans-serif;
+    font-size: 16px;
+    color: rgb(2, 2, 139);
+}
