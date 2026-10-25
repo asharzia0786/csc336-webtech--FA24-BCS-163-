@@ -1,0 +1,176 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+header {
+  border-bottom: 1px solid #ddd;
+}
+
+.navbar {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  color: #222;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 26px;
+  margin: auto;
+}
+
+.nav-links a,
+.cart {
+  color: #222;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: #607756;
+}
+
+.nav-toggle,
+.navbar-toggler {
+  display: none;
+}
+
+.intro {
+  background: #eef0e9;
+  padding: 60px 0;
+}
+
+.intro p {
+  color: #607756;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.intro h1,
+.products h2,
+.about h2 {
+  font-family: Georgia, serif;
+}
+
+.intro h1 {
+  font-size: 45px;
+  margin: 10px 0 14px;
+}
+
+.intro span {
+  color: #555;
+}
+
+.products {
+  padding-top: 55px;
+  padding-bottom: 65px;
+}
+
+.products h2 {
+  font-size: 34px;
+  margin-bottom: 28px;
+}
+
+.product-card {
+  border: 1px solid #ddd;
+  height: 100%;
+  padding: 14px;
+}
+
+.product-card img {
+  background: #f5f5f2;
+  display: block;
+  height: 200px;
+  margin-bottom: 15px;
+  object-fit: contain;
+  width: 100%;
+}
+
+.product-card h3 {
+  font-size: 16px;
+  margin: 0 0 10px;
+}
+
+.product-card p {
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+.about {
+  background: #f1f2ec;
+  padding: 40px 0;
+}
+
+.about h2 {
+  font-size: 30px;
+}
+
+footer {
+  background: #222;
+  color: #fff;
+  font-size: 13px;
+  padding: 24px 0;
+}
+
+@media (max-width: 767.98px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+
+  .navbar-brand {
+    margin-right: auto;
+  }
+
+  .navbar-toggler {
+    background: transparent;
+    border: 0;
+    display: block;
+    font-size: 25px;
+    margin-right: 15px;
+    order: 2;
+  }
+
+  .cart {
+    order: 3;
+  }
+
+  .nav-links {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 12px;
+    margin: 12px 0 15px;
+    order: 4;
+  }
+
+  .nav-toggle:checked ~ .nav-links {
+    display: flex;
+  }
+
+  .intro {
+    padding: 45px 0;
+  }
+
+  .intro h1 {
+    font-size: 36px;
+  }
+
+  .product-card img {
+    height: 260px;
+  }
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Store | Lab 2</title>
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link href="bootstrap-icons.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav class="navbar container">
+      <a class="navbar-brand" href="index.html">SIMPLE STORE</a>
+      <input class="nav-toggle" type="checkbox" id="nav-toggle">
+      <label class="navbar-toggler" for="nav-toggle"><i class="bi bi-list"></i></label>
+      <div class="nav-links"><a href="#products">Products</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+      <a class="cart" href="#cart"><i class="bi bi-cart3"></i> Cart (0)</a>
+    </nav>
+  </header>
+  <main>
+    <section class="intro"><div class="container"><p>Products for everyday use</p><span>Quality items at affordable prices</span></div></section>
+    <section class="container products" id="products"><h2>Our products</h2><div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <div class="col">
+        <article class="product-card">
+          <img src="assets/paper-towel.svg" alt="Paper Towels">
+          <h3>Paper Towels</h3>
+          <p>Rs. 450</p>
+          <button class="btn btn-outline-dark btn-sm">Add to cart</button>
+        </article>
+      </div>
+      <div class="col">
+        <article class="product-card">
+          <img src="assets/tissue.svg" alt="Soft Tissues">
+          <h3>Soft Tissues</h3>
+          <p>Rs. 300</p>
+          <button class="btn btn-outline-dark btn-sm">Add to cart</button>
+        </article>
+      </div>
+      <div class="col">
+        <article class="product-card">
+          <img src="assets/cleaner.svg" alt="Surface Cleaner">
+          <h3>Surface Cleaner</h3>
+          <p>Rs. 380</p>
+          <button class="btn btn-outline-dark btn-sm">Add to cart</button>
+        </article>
+      </div>
+      <div class="col">
+        <article class="product-card">
+          <img src="assets/dish-soap.svg" alt="Dish Soap">
+          <h3>Dish Soap</h3>
+          <p>Rs. 250</p>
+          <button class="btn btn-outline-dark btn-sm">Add to cart</button>
+        </article>
+      </div>
+    </div>
+  </section>
+  <section class="about" id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>We offer useful household basics at fair prices. Our goal is to make everyday shopping simple.</p>
+    </div>
+  </section>
+  </main>
+  <footer id="contact"><div class="container">Brandless . 2026</div></footer>
+</body>
+</html>
