@@ -22,49 +22,47 @@ Derived constants used in code:
 
 | File | Changed for |
 |------|-------------|
-| `index.html` | Task 1 (filter markup), Task 3 (search/sort bar + script link) |
-| `product.html` | Task 2 (CSS Grid layout, sticky details, long description) |
-| `styles.css` | Task 1 (filter CSS), Task 2 (grid + sticky CSS), Task 3 (search bar, no-results, premium badge) |
-| `script.js` | Task 3 (live search, sort, premium labels) — new file |
-| `README.md` | This file — new |
+| `index.html` | Task 1 (category filter inputs/labels), Task 3 (search box, sort button, no-results message, script tag) |
+| `product.html` | Task 2 (CSS Grid layout, sticky details container, comprehensive description) |
+| `styles.css` | Task 1 (filter CSS and active pill accent), Task 2 (CSS Grid, sticky offset, white container card), Task 3 (premium badge styling) |
+| `script.js` | Task 3 (live search, combined category filtering, ascending/descending DOM-based price sort, premium label injection) |
+| `README.md` | Documentation of personal numbers, task details, and changes |
 
 ---
 
 ## Task 1 — CSS-only Category Filter
 
-**What changed:** Added 4 radio inputs and 4 `<label>` pills inside `.filter-bar` above the product grid in `index.html`. Each `<div class="col">` product card got a `data-category` attribute (`paper`, `cleaning`, or `bundles` — K = 3 categories).
+**What changed:** Added 4 radio inputs as direct siblings of `#product-grid` and 4 `<label>` pills inside `.filter-bar` in `index.html`. Each card received a `data-category` attribute (`paper`, `cleaning`, `bundles` — K = 3).
 
-**How it works (CSS):** The radio inputs are `position:absolute; opacity:0` so only the pill labels are visible. Because the inputs live as siblings of `#product-grid`, the CSS general sibling combinator (`~`) lets a `:checked` rule reach inside the grid. When `#cat-paper:checked` fires, all `.col` get `display:none` first, then only `.col[data-category="paper"]` get `display:block`. The "All" radio has no hiding rule, so everything is visible. The selected label gets `background:hsl(81,70%,45%)` (accent H = 81).
+**How it works (CSS):** The radio inputs are visually hidden (`position: absolute; opacity: 0`). When a radio button is `:checked`, the sibling combinator (`~`) targets the grid to hide non-matching items and display only the matching category cards. The "All" option has no hiding rule and displays all items. The active pill is highlighted with accent color `hsl(81, 70%, 45%)`.
 
-**Why no JS:** The `:checked ~ sibling` technique is pure CSS — no script is involved in showing or hiding cards.
+**Why no JS:** Pure CSS `:checked ~` selectors control card visibility and label styling without running any JavaScript.
 
 ---
 
 ## Task 2 — Product Page: CSS Grid + Sticky Details
 
-**What changed:** Replaced the Bootstrap `.row`/`.col-md-6` layout in `product.html` with a `<div class="product-layout">` that uses CSS Grid with named areas. Three areas: `image`, `details`, `desc`. Expanded the description to fill enough vertical space to demonstrate sticky scrolling.
+**What changed:** Reworked `product.html` layout with CSS Grid using named areas (`image`, `details`, `desc`) inside `.product-layout`. The description text was expanded to allow vertical scrolling.
 
 **How it works:**
-- **Below 663 px:** `grid-template-areas: "image" "details" "desc"` — single column stack.
-- **663 px and wider:** `grid-template-columns: 1fr 1fr` and `grid-template-areas: "image details" "desc desc"` — side by side, description full-width underneath.
-- **Sticky:** `.product-details-area { position: sticky; top: 93px; align-self: start }` inside `@media(min-width:663px)`. `align-self:start` is required so the sticky element doesn't stretch to fill its grid row and `position:sticky` is respected.
+- **Below BP (663 px):** Single column layout (`grid-template-areas: "image" "details" "desc"`).
+- **At BP (663 px) and wider:** Two columns side-by-side (`grid-template-areas: "image details" "desc desc"`), with description spanning full width underneath.
+- **Sticky details box:** Styled with `position: sticky; top: 93px; align-self: start; background: #fff; border-radius: 12px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,.07);` so the panel stays pinned in the viewport with a solid background during scroll.
 
 ---
 
 ## Task 3 — JavaScript: Live Search, Price Sort, Premium Label
 
-**What changed:** Created `midterm/script.js` (linked at bottom of `index.html`). Renamed price `<p>` elements to `class="card-price"` in `index.html` for reliable parsing.
+**What changed:** Created `script.js` and linked it at the bottom of `index.html`. Added search input, sort button, and "No products found" container in `index.html`.
 
-**Live search:** An `input` event listener on `#search-box` lowercases the query and compares it to the lowercased `<h3>` text of each `.col`. Cards that don't match get `display:none`. Works together with the CSS category filter — both conditions must pass.
-
-**No products found:** `applyFilters()` counts truly visible cards (matching both search and category) and toggles `.visible` on `#no-results`.
-
-**Sort by price:** `#sort-btn` click handler sorts the `cols` array copy by parsed numeric price (stripped of `Rs.` and commas), then calls `grid.appendChild()` on each — this moves existing DOM nodes, no `innerHTML` is touched.
-
-**Premium label:** On page load, each card's price is parsed. If `price > 6300` (N × 100 = 63 × 100), a `<span class="premium-label">Premium</span>` is appended inside `.product-card`.
+**How it works:**
+- **Live Search & Category Integration:** An `input` event on `#search-box` and `change` event on category radios filter the cards. A product is shown only if it matches both the active category and the search query (case-insensitive).
+- **No Products Found:** If no product passes both filters, `#product-grid` is hidden and `#no-results` is displayed in place of the grid.
+- **Price Sort:** The "Sort by price" button toggles between ascending (lowest to highest) and descending orders. Prices are read directly from card text (`.product-card p`) and the existing DOM nodes are rearranged using `productGrid.appendChild(col)` without rewriting `innerHTML`.
+- **Premium Label:** On page load, the script scans each product card's price. Any product exceeding N × 100 (Rs. 6,300) dynamically receives a `<span class="premium-label">Premium</span>` badge.
 
 ---
 
 ## AI Tools Used
 
-- **Antigravity (Google DeepMind)** — generated all HTML, CSS and JavaScript for this midterm under instruction.
+- **Antigravity (Google DeepMind)**

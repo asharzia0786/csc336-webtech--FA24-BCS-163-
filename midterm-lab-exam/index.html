@@ -64,6 +64,17 @@
         <label for="cat-bundles"  class="filter-label">Bundles</label>
       </div>
 
+      <!-- Task 3: Live search and price sort controls -->
+      <div class="search-sort-bar d-flex flex-wrap gap-2 justify-content-between align-items-center mb-4">
+        <input type="search" id="search-box" class="form-control" style="max-width: 300px;" placeholder="Search products by name..." aria-label="Search products">
+        <button id="sort-btn" class="btn btn-outline-dark" type="button">Sort by price ↕</button>
+      </div>
+
+      <!-- Task 3: No products found message in place of grid -->
+      <div id="no-results" class="text-center py-5" style="display: none;">
+        <p class="fs-4 text-muted mb-0">No products found</p>
+      </div>
+
       <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4" id="product-grid">
         <div class="col" data-category="paper">
           <article class="product-card">
@@ -117,7 +128,7 @@
           <article class="product-card">
             <img src="assets/roll-bundle.svg" alt="Just the Roll Bundle">
             <h3>Just the Roll Bundle</h3>
-            <p>Rs. 2,400</p>
+            <p>Rs. 6,800</p>
             <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
           </article>
         </div>
@@ -139,5 +150,6 @@
     </section>
   </main>
   <footer><div class="container"><strong>BRANDLESS</strong><span>2026</span></div></footer>
+  <script src="script.js"></script>
 </body>
 </html>
