@@ -45,79 +45,98 @@
         </div>
         <p>8 products available</p>
       </div>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4">
-      <div class="col">
-        <article class="product-card">
-          <img src="assets/kitchen-towel.svg" alt="Kitchen Towel Roll">
-          <h3>Kitchen Towel Roll</h3>
-          <p>Rs. 550</p>
-          <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
-        </article>
+
+      <!-- ═══════════════════════════════════════════════════════
+           TASK 1 — CSS-only category filter
+           K = 3 → categories: Paper, Cleaning, Bundles
+           Inputs are direct siblings of #product-grid so the
+           ~ combinator can reach it. Labels stay in .filter-bar.
+           ═══════════════════════════════════════════════════════ -->
+      <input type="radio" name="cat" id="cat-all"      value="all"      checked>
+      <input type="radio" name="cat" id="cat-paper"    value="paper">
+      <input type="radio" name="cat" id="cat-cleaning" value="cleaning">
+      <input type="radio" name="cat" id="cat-bundles"  value="bundles">
+
+      <div class="filter-bar">
+        <label for="cat-all"      class="filter-label">All</label>
+        <label for="cat-paper"    class="filter-label">Paper</label>
+        <label for="cat-cleaning" class="filter-label">Cleaning</label>
+        <label for="cat-bundles"  class="filter-label">Bundles</label>
       </div>
-      <div class="col">
-        <article class="product-card">
-          <img src="assets/tissue-box.svg" alt="Hygiene Tissue Box">
-          <h3>Hygiene Tissue Box</h3>
-          <p>Rs. 500</p>
-          <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
-        </article>
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-4" id="product-grid">
+        <div class="col" data-category="paper">
+          <article class="product-card">
+            <img src="assets/kitchen-towel.svg" alt="Kitchen Towel Roll">
+            <h3>Kitchen Towel Roll</h3>
+            <p>Rs. 550</p>
+            <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
+          </article>
+        </div>
+        <div class="col" data-category="paper">
+          <article class="product-card">
+            <img src="assets/tissue-box.svg" alt="Hygiene Tissue Box">
+            <h3>Hygiene Tissue Box</h3>
+            <p>Rs. 500</p>
+            <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
+          </article>
+        </div>
+        <div class="col" data-category="paper">
+          <article class="product-card">
+            <img src="assets/toilet-paper.svg" alt="Toilet Paper Pack">
+            <h3>Toilet Paper Pack</h3>
+            <p>Rs. 850</p>
+            <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
+          </article>
+        </div>
+        <div class="col" data-category="cleaning">
+          <article class="product-card">
+            <img src="assets/dish-wash.svg" alt="Dish Wash">
+            <h3>Dish Wash</h3>
+            <p>Rs. 280</p>
+            <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
+          </article>
+        </div>
+        <div class="col" data-category="paper">
+          <article class="product-card">
+            <img src="assets/pop-up-tissue.svg" alt="Pop Up Tissue">
+            <h3>Pop-Up Tissue</h3>
+            <p>Rs. 200</p>
+            <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
+          </article>
+        </div>
+        <div class="col" data-category="bundles">
+          <article class="product-card">
+            <img src="assets/essentials-bundle.svg" alt="Essentials Bundle">
+            <h3>Essentials Bundle</h3>
+            <p>Rs. 2,350</p>
+            <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
+          </article>
+        </div>
+        <div class="col" data-category="bundles">
+          <article class="product-card">
+            <img src="assets/roll-bundle.svg" alt="Just the Roll Bundle">
+            <h3>Just the Roll Bundle</h3>
+            <p>Rs. 2,400</p>
+            <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
+          </article>
+        </div>
+        <div class="col" data-category="cleaning">
+          <article class="product-card">
+            <img src="assets/floor-cleaner.svg" alt="Floor Cleaner">
+            <h3>Floor Cleaner</h3>
+            <p>Rs. 330</p>
+            <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
+          </article>
+        </div>
       </div>
-      <div class="col">
-        <article class="product-card">
-          <img src="assets/toilet-paper.svg" alt="Toilet Paper Pack">
-          <h3>Toilet Paper Pack</h3>
-          <p>Rs. 850</p>
-          <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
-        </article>
+    </section>
+    <section class="about" id="about">
+      <div class="container">
+        <h2>Why Brandless?</h2>
+        <p>We offer useful household basics at fair prices. Our goal is to make everyday shopping simple.</p>
       </div>
-      <div class="col">
-        <article class="product-card">
-          <img src="assets/dish-wash.svg" alt="Dish Wash">
-          <h3>Dish Wash</h3>
-          <p>Rs. 280</p>
-          <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
-        </article>
-      </div>
-      <div class="col">
-        <article class="product-card">
-          <img src="assets/pop-up-tissue.svg" alt="Pop Up Tissue">
-          <h3>Pop-Up Tissue</h3>
-          <p>Rs. 200</p>
-          <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
-        </article>
-      </div>
-      <div class="col">
-        <article class="product-card">
-          <img src="assets/essentials-bundle.svg" alt="Essentials Bundle">
-          <h3>Essentials Bundle</h3>
-          <p>Rs. 2,350</p>
-          <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
-        </article>
-      </div>
-      <div class="col">
-        <article class="product-card">
-          <img src="assets/roll-bundle.svg" alt="Just the Roll Bundle">
-          <h3>Just the Roll Bundle</h3>
-          <p>Rs. 2,400</p>
-          <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
-        </article>
-      </div>
-      <div class="col">
-        <article class="product-card">
-          <img src="assets/floor-cleaner.svg" alt="Floor Cleaner">
-          <h3>Floor Cleaner</h3>
-          <p>Rs. 330</p>
-          <a href="product.html" class="btn btn-outline-dark btn-sm">View product</a>
-        </article>
-      </div>
-    </div>
-  </section>
-  <section class="about" id="about">
-    <div class="container">
-      <h2>Why Brandless?</h2>
-      <p>We offer useful household basics at fair prices. Our goal is to make everyday shopping simple.</p>
-    </div>
-  </section>
+    </section>
   </main>
   <footer><div class="container"><strong>BRANDLESS</strong><span>2026</span></div></footer>
 </body>

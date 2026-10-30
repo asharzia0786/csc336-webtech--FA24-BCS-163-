@@ -1,3 +1,6 @@
+/* ============================================================
+   BASE / RESET
+   ============================================================ */
 *{
   box-sizing:border-box
 }
@@ -7,6 +10,10 @@ body{
   color:#222;
   background:#fff
 }
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
 .top-bar{
   background:#33402f;
   color:#fff;
@@ -14,6 +21,10 @@ body{
   padding:10px;
   font-size:13px
 }
+
+/* ============================================================
+   HEADER / NAV
+   ============================================================ */
 header{
   border-bottom:1px solid #ddd;
   background:#fff
@@ -51,6 +62,10 @@ header{
 .nav-toggle,.navbar-toggler{
   display:none
 }
+
+/* ============================================================
+   HERO
+   ============================================================ */
 .hero{
   background:#eef0e9;
   padding:55px 0
@@ -82,6 +97,10 @@ header{
   height:250px;
   object-fit:contain
 }
+
+/* ============================================================
+   PRODUCTS SECTION
+   ============================================================ */
 .products{
   padding-top:55px;
   padding-bottom:65px
@@ -101,6 +120,10 @@ header{
   font-size:13px;
   color:#666
 }
+
+/* ============================================================
+   PRODUCT CARDS
+   ============================================================ */
 .product-card{
   border:1px solid #ddd;
   padding:14px;
@@ -123,11 +146,104 @@ header{
   font-weight:bold;
   margin:0 0 14px
 }
-
 .product-card button:disabled{
   cursor:not-allowed;
   opacity:.45
 }
+
+/* ============================================================
+   TASK 1 — CSS-ONLY CATEGORY FILTER
+   ─────────────────────────────────────────────────────────────
+   N = 63 → K = 3 categories: Paper, Cleaning, Bundles
+   Accent colour: hsl(81, 70%, 45%)   [H = (63×7) mod 360 = 81]
+
+   How it works:
+   • Radio inputs are invisible (position:absolute; opacity:0)
+     but remain in the normal document flow so the CSS
+     general-sibling combinator (~) can reach #product-grid.
+   • When a category radio is :checked, ALL .col cards get
+     display:none first; then only the matching [data-category]
+     cards are restored to display:block.
+   • Selecting "All" has no hiding rule → everything is visible.
+   • No JavaScript involved anywhere in this task.
+   ============================================================ */
+
+/* Keep radio inputs invisible but in-flow */
+.filter-bar input[type="radio"]{
+  position:absolute;
+  opacity:0;
+  width:0;
+  height:0;
+  pointer-events:none
+}
+
+/* Pill container */
+.filter-bar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:20px;
+  align-items:center
+}
+
+/* Default pill appearance */
+.filter-label{
+  display:inline-block;
+  padding:6px 18px;
+  border:2px solid #ccc;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:500;
+  color:#555;
+  transition:border-color .15s, background .15s, color .15s;
+  user-select:none
+}
+.filter-label:hover{
+  border-color:#999;
+  color:#222
+}
+
+/* Selected pill — accent colour hsl(81, 70%, 45%) */
+#cat-all:checked      ~ .filter-bar .filter-label[for="cat-all"],
+#cat-paper:checked    ~ .filter-bar .filter-label[for="cat-paper"],
+#cat-cleaning:checked ~ .filter-bar .filter-label[for="cat-cleaning"],
+#cat-bundles:checked  ~ .filter-bar .filter-label[for="cat-bundles"]{
+  background:hsl(81,70%,45%);
+  border-color:hsl(81,70%,45%);
+  color:#fff
+}
+
+/* ── Filtering rules ─────────────────────────────────────── */
+/* Paper selected: hide all, then show paper */
+#cat-paper:checked ~ #product-grid .col{
+  display:none
+}
+#cat-paper:checked ~ #product-grid .col[data-category="paper"]{
+  display:block
+}
+
+/* Cleaning selected: hide all, then show cleaning */
+#cat-cleaning:checked ~ #product-grid .col{
+  display:none
+}
+#cat-cleaning:checked ~ #product-grid .col[data-category="cleaning"]{
+  display:block
+}
+
+/* Bundles selected: hide all, then show bundles */
+#cat-bundles:checked ~ #product-grid .col{
+  display:none
+}
+#cat-bundles:checked ~ #product-grid .col[data-category="bundles"]{
+  display:block
+}
+
+/* "All" → no hiding rule needed; everything stays visible by default */
+
+/* ============================================================
+   ABOUT SECTION
+   ============================================================ */
 .about{
   background:#f1f2ec;
   padding:45px 0
@@ -137,6 +253,10 @@ header{
   line-height:1.6;
   margin-bottom:0
 }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
 footer{
   background:#222;
   color:#fff;
@@ -147,6 +267,10 @@ footer .container{
   justify-content:space-between;
   font-size:13px
 }
+
+/* ============================================================
+   PRODUCT DETAIL PAGE (unchanged from assignment-2)
+   ============================================================ */
 .detail-page{
   padding-top:40px;
   padding-bottom:75px
@@ -185,73 +309,73 @@ footer .container{
   width:100%;
   padding:12px
 }
-
 .delivery{
   font-size:14px;
   color:#596552;
   margin-top:16px
 }
+
+/* ============================================================
+   RESPONSIVE — MOBILE (unchanged from assignment-2)
+   ============================================================ */
 @media(max-width:767.98px){
   .navbar{
-  flex-wrap:wrap
+    flex-wrap:wrap
+  }
+  .navbar-brand{
+    margin-right:auto
+  }
+  .navbar-toggler{
+    display:block;
+    border:0;
+    background:transparent;
+    font-size:25px;
+    order:2;
+    margin-right:15px
+  }
+  .cart{
+    order:3
+  }
+  .nav-links{
+    display:none;
+    order:4;
+    flex-basis:100%;
+    margin:12px 0 15px;
+    flex-direction:column;
+    gap:12px
+  }
+  .nav-toggle:checked~.nav-links{
+    display:flex
+  }
+  .hero{
+    padding:40px 0
+  }
+  .hero h1,.detail-page h1{
+    font-size:37px
+  }
+  .hero-picture{
+    margin-top:25px
+  }
+  .products{
+    padding-top:40px
+  }
+  .product-card img{
+    height:240px
+  }
+  .heading{
+    align-items:center
+  }
+  .heading h2{
+    font-size:29px
+  }
+  .heading>p{
+    display:none
+  }
+  .detail-image img{
+    height:300px
+  }
+  footer .container{
+    flex-direction:column;
+    gap:8px
+  }
 }
-.navbar-brand{
-  margin-right:auto
-}
-.navbar-toggler{
-  display:block;
-  border:0;
-  background:transparent;
-  font-size:25px;
-  order:2;
-  margin-right:15px
-}
-.cart{
-  order:3
-}
-.nav-links{
-  display:none;
-  order:4;
-  flex-basis:100%;
-  margin:12px 0 15px;
-  flex-direction:column;
-  gap:12px
-}
-.nav-toggle:checked~.nav-links{
-  display:flex
-}
-.hero{
-  padding:40px 0
-}
-.hero h1,.detail-page h1{
-  font-size:37px
-}
-.hero-picture{
-  margin-top:25px
-}
-.products{
-  padding-top:40px
-}
-.product-card img{
-  height:240px
-}
-.heading{
-  align-items:center
-}
-.heading h2{
-  font-size:29px
-}
-.heading>p{
-  display:none
-}
-.detail-image img{
-  height:300px
-}
-footer .container{
-  flex-direction:column;
-  gap:8px
-}
-
-}
-
-
