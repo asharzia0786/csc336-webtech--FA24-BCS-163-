@@ -269,7 +269,10 @@ footer .container{
 }
 
 /* ============================================================
-   PRODUCT DETAIL PAGE (unchanged from assignment-2)
+   TASK 2 — PRODUCT DETAIL PAGE
+   CSS Grid with named grid-template-areas.
+   BP = 663px  (600 + N, where N = 63)
+   Sticky top = (N mod 40) + 70 = 23 + 70 = 93px
    ============================================================ */
 .detail-page{
   padding-top:40px;
@@ -278,7 +281,8 @@ footer .container{
 .back{
   display:inline-block;
   margin-bottom:30px;
-  color:#333
+  color:#333;
+  text-decoration:none
 }
 .detail-image{
   background:#f5f5f2;
@@ -313,6 +317,58 @@ footer .container{
   font-size:14px;
   color:#596552;
   margin-top:16px
+}
+
+/*
+  Grid layout — named areas
+  Below 663px → one column:  image / details / desc  (stacked)
+  663px+      → two columns: image | details,  desc spans both
+*/
+.product-layout{
+  display:grid;
+  grid-template-areas:
+    "image"
+    "details"
+    "desc";
+  gap:32px
+}
+
+.product-image-area   { grid-area: image   }
+.product-details-area { grid-area: details }
+.product-desc-area    { grid-area: desc    }
+
+/* Wide layout from BP = 663px */
+@media(min-width:663px){
+  .product-layout{
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "image   details"
+      "desc    desc";
+  }
+
+  /*
+    Sticky details box.
+    align-self:start is essential — without it the grid item
+    stretches to fill the full row height and sticky has no
+    room to scroll within, so it stops working.
+    top: 93px = (63 mod 40) + 70
+  */
+  .product-details-area{
+    position:sticky;
+    top:93px;
+    align-self:start;
+    background:#fff;
+    border-radius:12px;
+    padding:24px;
+    box-shadow:0 2px 12px rgba(0,0,0,.07)
+  }
+}
+
+/* Smaller image on mobile */
+@media(max-width:662px){
+  .detail-image img{
+    height:280px
+  }
 }
 
 /* ============================================================
